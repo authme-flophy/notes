@@ -1,6 +1,13 @@
 from django.urls import path
-from . import views
+from notes.views import (
+    NoteListView,
+    NoteList,
+    NoteDetail
+)
+from rest_framework.urlpatterns import format_suffix_patterns
 
 urlpatterns = [
-    path('', views.homepage, name="homepage"),   
+    path('notes/', NoteListView.as_view(), name="homepage"),
+    path('api/notes/', NoteList.as_view()),  
+    path('api/notes/<int:pk>/', NoteDetail.as_view()),  
 ]
