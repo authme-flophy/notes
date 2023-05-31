@@ -20,3 +20,4 @@ class NoteList(generics.ListAPIView):
 class NoteDetail(generics.RetrieveUpdateDestroyAPIView):
     queryset = Note.objects.all()
     serializer_class = NoteSerializer
+    
