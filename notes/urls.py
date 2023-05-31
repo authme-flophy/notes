@@ -1,7 +1,7 @@
 from django.urls import path
 from notes.views import (
-    NoteListView,
     NoteList,
+    NoteListView,
     NoteDetail
 )
 from rest_framework.urlpatterns import format_suffix_patterns

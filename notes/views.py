@@ -13,7 +13,7 @@ class NoteListView(generic.ListView):
 # def homepage(request):
 #     return render(request, "notes/index.html")
 
-class NoteList(generics.ListAPIView):
+class NoteList(generics.ListCreateAPIView):
     queryset = Note.objects.all()
     serializer_class = NoteSerializer
 
