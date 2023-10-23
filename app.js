@@ -4,13 +4,14 @@ const notesRoutes = require("./routes/notesRoutes");
 require("dotenv").config();
 
 const app = express();
+const PORT = process.env.PORT || 3000;
 
 // mongo db uri
 const dbURI = `mongodb+srv://${process.env.MONGO_USER}:${process.env.MONGO_PASS}@${process.env.DATABASE_NAME}.i9ljoww.mongodb.net/${process.env.COLLECTION_NAME}`;
 
 mongoose
   .connect(dbURI)
-  .then((response) => app.listen("3000"))
+  .then((response) => app.listen(PORT))
   .catch((err) => console.error(err));
 
 // register view engine
