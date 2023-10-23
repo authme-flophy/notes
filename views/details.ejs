@@ -6,5 +6,21 @@
 
     <h1><%= note.title %></h1>
     <p><%= note.content %></p>
+
+    <button id="delete-button" data-doc="<%= note.id %>">DELETE</button>
   </body>
+
+  <script>
+    const deleteButton = document.getElementById("delete-button");
+    deleteButton.addEventListener("click", () => {
+      console.log(deleteButton.dataset.doc);
+      console.log(`/notes/${deleteButton.dataset.doc}`);
+      fetch(`/notes/${deleteButton.dataset.doc}`, {
+        method: "DELETE",
+      })
+        .then((response) => response.json())
+        .then((data) => (window.location.href = data.redirect))
+        .catch((err) => console.error(err));
+    });
+  </script>
 </html>

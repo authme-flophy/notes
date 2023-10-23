@@ -33,9 +33,17 @@ const note_create = (req, res) => {
     .catch((err) => console.error(err));
 };
 
+const note_delete = (req, res) => {
+  const id = req.params.id;
+  Note.findByIdAndDelete(id)
+    .then((result) => res.json({ redirect: "/" }))
+    .catch((err) => console.error(err));
+};
+
 module.exports = {
   note_index,
   note_create_page,
   note_details,
   note_create,
+  note_delete,
 };
