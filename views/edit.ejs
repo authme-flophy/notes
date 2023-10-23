@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+  <%- include("./partials/header.ejs") %>
+
+  <body>
+    <%- include("./partials/navbar.ejs") %>
+    <form id="form" data-doc="<%= note.id %>">
+      <label for="title">Title</label>
+      <input type="text" name="title" id="title" value="<%= note.title %>" />
+      <label for="content">content</label>
+      <textarea name="content" id="content" cols="30" rows="10">
+<%= note.content %></textarea
+      >
+      <button type="submit">Create Note</button>
+    </form>
+  </body>
+
+  <script>
+    const form = document.getElementById("form");
+    form.addEventListener("submit", (e) => {
+      e.preventDefault();
+
+      console.log(form.content.value);
+
+      fetch(`/notes/edit/${form.dataset.doc}`, {
+        method: "PUT",
+        headers: {
+          "Content-type": "application/json",
+        },
+        body: JSON.stringify({
+          title: form.title.value,
+          content: form.content.value,
+        }),
+      })
+        .then((response) => response.json())
+        .then((data) => (window.location.href = data.redirect))
+        .catch((err) => console.error(err));
+
+      console.log(form.title.value);
+    });
+  </script>
+</html>
