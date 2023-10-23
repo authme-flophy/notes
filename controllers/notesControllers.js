@@ -40,10 +40,26 @@ const note_delete = (req, res) => {
     .catch((err) => console.error(err));
 };
 
+const note_edit_page = (req, res) => {
+  const id = req.params.id;
+  Note.findById(id)
+    .then((note) => res.render("edit", { title: "edit", note: note }))
+    .catch((err) => console.error(err));
+};
+
+const note_edit = (req, res) => {
+  const id = req.params.id;
+  Note.findByIdAndUpdate(id, req.body, { new: true })
+    .then((response) => res.json({ redirect: `/notes/${id}` }))
+    .catch((err) => console.error(err));
+};
+
 module.exports = {
   note_index,
   note_create_page,
   note_details,
   note_create,
   note_delete,
+  note_edit_page,
+  note_edit,
 };
