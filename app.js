@@ -18,6 +18,7 @@ app.set("view engine", "ejs");
 
 // function is used to extract the data from the request body and add it to the request object in the form of req.body
 app.use(express.urlencoded({ extended: true }));
+app.use(express.json());
 
 app.use(notesRoutes);
 
