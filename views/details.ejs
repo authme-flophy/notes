@@ -7,11 +7,14 @@
     <h1><%= note.title %></h1>
     <p><%= note.content %></p>
 
+    <a href="/notes/edit/<%= note.id %>">EDIT</a>
     <button id="delete-button" data-doc="<%= note.id %>">DELETE</button>
   </body>
 
   <script>
+    const editButton = document.getElementById("edit-button");
     const deleteButton = document.getElementById("delete-button");
+
     deleteButton.addEventListener("click", () => {
       console.log(deleteButton.dataset.doc);
       console.log(`/notes/${deleteButton.dataset.doc}`);
@@ -22,5 +25,14 @@
         .then((data) => (window.location.href = data.redirect))
         .catch((err) => console.error(err));
     });
+
+    // editButton.addEventListener("click", () => {
+    //   console.log(editButton.dataset.doc);
+
+    //   fetch(`/notes/edit/${editButton.dataset.doc}`)
+    //     .then((response) => response.json())
+    //     .then((data) => (window.location.href = data.redirect))
+    //     .catch((err) => console.error(err));
+    // });
   </script>
 </html>
