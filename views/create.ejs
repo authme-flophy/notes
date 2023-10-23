@@ -4,12 +4,29 @@
 
   <body>
     <%- include("./partials/navbar.ejs") %>
-    <form action="/notes" method="POST">
-      <label for="title">Title</label>
-      <input type="text" name="title" id="title" />
-      <label for="content">content</label>
-      <textarea name="content" id="content" cols="30" rows="10"></textarea>
-      <button type="submit">Create Note</button>
+    <form
+      class="md:w-1/4 m-auto grid grid-cols-1 gap-3 pt-3 p-2"
+      action="/notes"
+      method="POST"
+    >
+      <label class="text-lg font-medium" for="title">Title</label>
+      <input
+        class="border border-neutral-500 p-1 rounded"
+        type="text"
+        name="title"
+        id="title"
+      />
+      <label class="text-lg font-medium" for="content">Content</label>
+      <textarea
+        class="border border-neutral-500 p-1 rounded"
+        name="content"
+        id="content"
+        cols="30"
+        rows="5"
+      ></textarea>
+      <button class="bg-[#fed000] py-1 rounded" type="submit">
+        Create Note
+      </button>
     </form>
   </body>
 </html>

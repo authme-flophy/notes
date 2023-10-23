@@ -4,11 +4,24 @@
   <body>
     <%- include("./partials/navbar.ejs") %>
 
-    <h1><%= note.title %></h1>
-    <p><%= note.content %></p>
-
-    <a href="/notes/edit/<%= note.id %>">EDIT</a>
-    <button id="delete-button" data-doc="<%= note.id %>">DELETE</button>
+    <div class="md:w-3/4 m-auto p-4">
+      <h1 class="text-xl font-semibold pb-2"><%= note.title %></h1>
+      <p class="pb-2"><%= note.content %></p>
+      <div class="flex gap-3">
+        <a
+          class="bg-[#fed000] py-1 px-3 rounded font-medium text-sm"
+          href="/notes/edit/<%= note.id %>"
+          >EDIT</a
+        >
+        <button
+          class="bg-red-600 py-1 px-3 rounded text-white font-medium text-sm"
+          id="delete-button"
+          data-doc="<%= note.id %>"
+        >
+          DELETE
+        </button>
+      </div>
+    </div>
   </body>
 
   <script>
